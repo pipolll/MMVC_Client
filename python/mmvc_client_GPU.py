@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 #use thread limit
 import os
+os.environ["OMP_NUM_THREADS"] = "1"
 import pyaudio
-import numpy as np
+import cupy as np
 
 #voice conversion
 import torch
@@ -14,7 +15,8 @@ from text.symbols import symbols
 # from Shifter.shifter import Shifter
 import soundfile as sf
 #noice reduce
-import noisereduce as nr
+#import noisereduce as nr
+from noisereduce_master.noisereduce import noisereduce as nr
 import json
 #use logging
 from logging import getLogger
@@ -118,7 +120,8 @@ class Hyperparameters():
         # f0を変えるだけでは枯れた声は直らなかった
         #f0trans = Shifter(Hyperparameters.SAMPLE_RATE, 1.75, frame_ms=20, shift_ms=10)
         #transformed = f0trans.transform(signal)
-        signal = torch.from_numpy(signal.astype(np.float32)).clone()
+        signal = torch.as_tensor(signal.astype(np.float32))
+        #signal = torch.from_numpy(signal.astype(np.float32)).clone()
 
         #voice conversion
         with torch.no_grad():
