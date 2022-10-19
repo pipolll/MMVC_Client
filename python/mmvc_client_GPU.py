@@ -30,6 +30,9 @@ import wave
 
 import math
 
+import csv
+import pyworld as pw
+
 class Hyperparameters():
     CHANNELS = 1 #モノラル
     FORMAT = pyaudio.paInt16
@@ -205,14 +208,14 @@ class Hyperparameters():
         with torch.no_grad():
             #SID
             trans_length = signal.size()[0]
-            text, spec, wav, sid = tdbm.get_audio_text_speaker_pair(signal.view(1, trans_length), ["m", Hyperparameters.SOURCE_ID, "m"])
+            text, spec, wav, sid, note = tdbm.get_audio_text_speaker_pair(signal.view(1, trans_length), ["m", Hyperparameters.SOURCE_ID, "m", "0"])
             if dispose_stft_specs != 0:
                 # specの頭と終がstft paddingの影響受けるので2コマを削る
                 # wavもspecで削るぶんと同じだけ頭256と終256を削る
                 spec = spec[:, dispose_stft_specs:-dispose_stft_specs]
                 wav = wav[:, dispose_stft_length:-dispose_stft_length]
-            data = TextAudioSpeakerCollate()([(text, spec, wav, sid)])
-            x, x_lengths, spec, spec_lengths, y, y_lengths, sid_src = [x.cuda(Hyperparameters.GPU_ID) for x in data]
+            data = TextAudioSpeakerCollate()([(text, spec, wav, sid, note)])
+            x, x_lengths, spec, spec_lengths, y, y_lengths, sid_src, _ , _ = [x.cuda(Hyperparameters.GPU_ID) for x in data]
 
             sid_target = torch.LongTensor([target_id]).cuda(Hyperparameters.GPU_ID) # 話者IDはJVSの番号を100で割った余りです
             audio = net_g.cuda(Hyperparameters.GPU_ID).voice_conversion(spec, spec_lengths, sid_src, sid_target, dispose_conv1d_specs)[0][0,0].data.cpu().float().numpy()
@@ -411,11 +414,12 @@ class Transform_Data_By_Model():
         return spec
 
     def get_audio_text_speaker_pair(self, wav, audiopath_sid_text):
-        _, sid, text = audiopath_sid_text[0], audiopath_sid_text[1], audiopath_sid_text[2]
+        _, sid, text, note = audiopath_sid_text[0], audiopath_sid_text[1], audiopath_sid_text[2], audiopath_sid_text[3]
         text = self.get_text(text)
         spec = self.get_spec(wav)
         sid = self.get_sid(sid)
-        return (text, spec, wav, sid)
+        note = self.get_note(note)
+        return (text, spec, wav, sid, note)
 
     def get_spec(self, audio_norm):
         filter_length = self.FILTER_LENGTH
@@ -431,6 +435,13 @@ class Transform_Data_By_Model():
     def get_text(self, text):
         return text
 
+    def get_note(self, note):
+        note = note.split('-')
+        #note_ = [int(i) for i in note]
+        note = list(map(int, note))
+        note_tensor = torch.LongTensor(note)
+        return note_tensor
+
     def get_sid(self, sid):
         sid = torch.LongTensor([int(sid)])
         return sid
@@ -445,7 +456,7 @@ class TextAudioSpeakerCollate():
         """Collate's training batch from normalized text, audio and speaker identities
         PARAMS
         ------
-        batch: [text_normalized, spec_normalized, wav_normalized, sid]
+        batch: [text_normalized, spec_normalized, wav_normalized, sid, note]
         """
         # Right zero-pad all one-hot text sequences to max input length
         _, ids_sorted_decreasing = torch.sort(
@@ -455,18 +466,22 @@ class TextAudioSpeakerCollate():
         max_text_len = max([len(x[0]) for x in batch])
         max_spec_len = max([x[1].size(1) for x in batch])
         max_wav_len = max([x[2].size(1) for x in batch])
+        max_note_len = max([len(x[4]) for x in batch])
 
         text_lengths = torch.LongTensor(len(batch))
         spec_lengths = torch.LongTensor(len(batch))
         wav_lengths = torch.LongTensor(len(batch))
         sid = torch.LongTensor(len(batch))
+        note_lengths = torch.LongTensor(len(batch))
 
         text_padded = torch.LongTensor(len(batch), max_text_len)
         spec_padded = torch.FloatTensor(len(batch), batch[0][1].size(0), max_spec_len)
         wav_padded = torch.FloatTensor(len(batch), 1, max_wav_len)
+        note_padded = torch.LongTensor(len(batch), max_note_len)
         text_padded.zero_()
         spec_padded.zero_()
         wav_padded.zero_()
+        note_padded.zero_()
         for i in range(len(ids_sorted_decreasing)):
             row = batch[ids_sorted_decreasing[i]]
 
@@ -480,9 +495,13 @@ class TextAudioSpeakerCollate():
 
             sid[i] = row[3]
 
+            note = row[4]
+            note_padded[i, :note.size(0)] = note
+            note_lengths[i] = note.size(0)
+
         if self.return_ids:
-            return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, ids_sorted_decreasing
-        return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid
+            return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, ids_sorted_decreasing, note_padded, note_lengths
+        return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, note_padded, note_lengths
 
 class MockStream:
     """

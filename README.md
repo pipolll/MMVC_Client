@@ -26,11 +26,12 @@ https://github.com/isletennos/MMVC_Trainer
 [MMVC_client 無印(GPU ver)](https://drive.google.com/file/d/1XNdfT3BFGKlxDm43hEbYvnoJSecjLedt/view?usp=sharing)  
 
 #### TrainnerとClientの対応表
-| ver 対応表                | MMVC Trainner v1.2.0.x | MMVC Trainner v1.2.1.x | MMVC Trainner v1.3.0.x | 
-| ------------------------- | ---------------------- | ---------------------- | ---------------------- | 
-| MMVC Client 無印(CPU/GPU) | 〇                     | 〇                     | ×
-| MMVC Client v0.2.0.x(GPU) | 〇                     | 〇                     | ×
-| MMVC Client v0.3.0.x(GPU) | ×                     | ×                     | 〇
+| ver 対応表                | MMVC Trainner v1.2.0.x | MMVC Trainner v1.2.1.x | MMVC Trainner v1.3.0.x |  MMVC Trainner v1.4.0.x | 
+| ------------------------- | ---------------------- | ---------------------- | ---------------------- |  ---------------------- | 
+| MMVC Client 無印(CPU/GPU) | 〇                     | 〇                     | ×                     |  ×                     |
+| MMVC Client v0.2.0.x(GPU) | 〇                     | 〇                     | ×                     |  ×                     |
+| MMVC Client v0.3.0.x(GPU) | ×                     | ×                     | 〇                     |  ×                     |
+| MMVC Client v0.4.0.x(GPU) | ×                     | ×                     | ×                     |  ○                     |
 
 ## Install(python)
 このリポジトリをダウンロードして、展開してください。  
