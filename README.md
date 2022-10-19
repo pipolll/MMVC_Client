@@ -16,7 +16,7 @@ https://github.com/isletennos/MMVC_Trainer/tree/v1.4.0.0
 ## Install
 ### windows かつ 実行ファイルを利用する方
 下記URLからGPU版をダウンロードして、展開してください。(ファイルサイズが非常に大きいので注意)  
-[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/file/d/1x1jh99EJyIDeOXr4LUj6Dw_y_XpqccpL/view?usp=sharing)  
+[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/file/d/1oSFG7GDbxrBxF7ewwEzRH_FwB0GYltKe/view?usp=sharing)  
 #### ファイルサイズが大きすぎてDLできない人向けの分割版
 [MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/drive/folders/1eKOt4ng8J1WVlFCtG3RvNM4VCq6J0Hs8?usp=sharing)  
 
