@@ -8,7 +8,7 @@ AIを使ったリアルタイムボイスチェンジャー「MMVC(RealTime-Many
 の本体です。  
 MMVC_Trainerで学習したモデルを使ってリアルタイムでVCを行います。
 ## MMVC_Trainer
-https://github.com/isletennos/MMVC_Trainer
+https://github.com/isletennos/MMVC_Trainer/tree/v1.4.0.0
 ## concept
 「簡単」「だれでも」「好きな声に」「リアルタイムで」
 ## Requirement
@@ -16,11 +16,13 @@ https://github.com/isletennos/MMVC_Trainer
 ## Install
 ### windows かつ 実行ファイルを利用する方
 下記URLからGPU版をダウンロードして、展開してください。(ファイルサイズが非常に大きいので注意)  
-[MMVC_client v0.3.0.0(GPU ver)](https://drive.google.com/file/d/1QXJQAnTOr8vE5nwxInUROtj-fiHeJsXH/view?usp=sharing)  
+[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/file/d/1x1jh99EJyIDeOXr4LUj6Dw_y_XpqccpL/view?usp=sharing)  
 #### ファイルサイズが大きすぎてDLできない人向けの分割版
-[MMVC_client v0.3.0.0(GPU ver)](https://drive.google.com/drive/folders/1eoDBw37WT7wJsAXh-RIXvXLvbSwnDtt9?usp=sharing)  
+[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/drive/folders/1eKOt4ng8J1WVlFCtG3RvNM4VCq6J0Hs8?usp=sharing)  
 
 ### 旧ver
+[MMVC_client v0.3.0.0(GPU ver)](https://drive.google.com/file/d/1QXJQAnTOr8vE5nwxInUROtj-fiHeJsXH/view?usp=sharing)  
+[MMVC_client v0.3.0.0(GPU ver)分割版](https://drive.google.com/drive/folders/1eoDBw37WT7wJsAXh-RIXvXLvbSwnDtt9?usp=sharing)  
 [MMVC_client v0.2.0.1(GPU ver)](https://drive.google.com/file/d/1JEvYw4vjiBwhsZq79Pb0Doh7Fy16dK76/view?usp=sharing)  
 [MMVC_client 無印(CPU_ver) (現在非推奨)](https://drive.google.com/file/d/1KLqo_q-qbahPRzNo2kUhCqHqnb8lTjMJ/view?usp=sharing)  
 [MMVC_client 無印(GPU ver)](https://drive.google.com/file/d/1XNdfT3BFGKlxDm43hEbYvnoJSecjLedt/view?usp=sharing)  
