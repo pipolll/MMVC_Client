@@ -63,7 +63,7 @@ myprofile.confの下記項目を環境に合わせて変更します。
     "dispose_stft_specs":2,
     "dispose_conv1d_specs":10,
     "source_id":107,
-    "target_id":100
+    "target_id":101
   },
 ```
 
@@ -79,7 +79,7 @@ myprofile.confの下記項目を環境に合わせて変更します。
   "others": {
     "use_nr":false,
     "voice_selector":false,
-    "voice_list": [100, 108, 107, 6, 30, 108],
+    "voice_list": [101, 108, 107, 6, 30, 108],
     "voice_label": ["ずんだもん", "目標話者", "自分の声", "女性の声", "男性の低い声", "女性の高い声"]
   }
 ```
@@ -127,7 +127,7 @@ Trainerで特に弄っていなければ、107のままで問題ありません�
 
 **target_id : 変換先の音声の話者IDになります。**  
 学習時に生成した「./filelists/train_config_Correspondence.txt」を参考に話者IDを指定してください。  
-チュートリアルもんであれば100のままで問題ありません。  
+チュートリアルもんであれば101のままで問題ありません。  
 
 ### 2.3 myprofile.confの書き換え(path)
 このセクションでは、下記項目の変更方法について記載します。  
@@ -219,7 +219,7 @@ D:\mmvc_client_GPU\myprofile.conf
   "others": {
     "use_nr":false,
     "voice_selector":false,
-    "voice_list": [100, 108, 107, 6, 30, 108],
+    "voice_list": [101, 108, 107, 6, 30, 108],
     "voice_label": ["ずんだもん", "目標話者", "自分の声", "女性の声", "男性の低い声", "女性の高い声"]
   }
 ```
