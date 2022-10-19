@@ -117,7 +117,7 @@ myprofile.confの下記項目を環境に合わせて変更します。
     "dispose_stft_specs":2,
     "dispose_conv1d_specs":10,
     "source_id":107,
-    "target_id":100
+    "target_id":101
   },
 ```
 この項目では、下記2項目のみ変更します。それ以外の項目については割愛します。  
@@ -161,7 +161,7 @@ Trainerで特に弄っていなければ、107のままで問題ありません�
   "others": {
     "use_nr":false,
     "voice_selector":false,
-    "voice_list": [100, 108, 107, 6, 30, 108],
+    "voice_list": [101, 108, 107, 6, 30, 108],
     "voice_label": ["ずんだもん", "目標話者", "自分の声", "女性の声", "男性の低い声", "女性の高い声"]
   }
 ```
