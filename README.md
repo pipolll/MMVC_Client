@@ -14,6 +14,7 @@ https://github.com/isletennos/MMVC_Trainer/tree/v1.4.0.0
 ## Requirement
 ・MMVC_Trainerで学習したモデルとそのコンフィグ  
 ・**CUDA Toolkit 11.x のインストール**  
+・**(Readme記述時点では11.8 を推奨)**  
 https://developer.nvidia.com/cuda-downloads
 ## Install
 ### windows かつ 実行ファイルを利用する方
