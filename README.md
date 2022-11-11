@@ -19,9 +19,9 @@ https://developer.nvidia.com/cuda-downloads
 ## Install
 ### windows かつ 実行ファイルを利用する方
 下記URLからGPU版をダウンロードして、展開してください。(ファイルサイズが非常に大きいので注意)  
-[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/file/d/1oSFG7GDbxrBxF7ewwEzRH_FwB0GYltKe/view?usp=sharing)  
+[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/file/d/1f6-NOpiDEmx_YwhuFHX93qaq9NVrT4-T/view?usp=sharing)  
 #### ファイルサイズが大きすぎてDLできない人向けの分割版
-[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/drive/folders/1eKOt4ng8J1WVlFCtG3RvNM4VCq6J0Hs8?usp=sharing)  
+[MMVC_client v0.4.0.0(GPU ver)](https://drive.google.com/drive/folders/1HDbyDrLz4xTOwrdaAshyW7yIiFCwl4Ui?usp=sharing)  
 
 ### 旧ver
 [MMVC_client v0.3.0.0(GPU ver)](https://drive.google.com/file/d/1QXJQAnTOr8vE5nwxInUROtj-fiHeJsXH/view?usp=sharing)  
